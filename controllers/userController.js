@@ -125,7 +125,9 @@ class UserController {
 
             if (field.name === "gender") {
 
-                user[field.name] ? (field.checked) : field.value;
+                if (field.checked) {
+                    user[field.name] = field.value
+                }
 
             } else if (field.name === 'admin') {
 
@@ -187,9 +189,22 @@ class UserController {
 
                 if (field) {
 
-                    if (field.type == 'file') continue;
+                    switch (field.type) {
+                        case 'file':
+                            continue;
+                            break;
+                        case 'radio':
+                            field = form.querySelector("[name=" + name.replace("_", "") + "][value=" + json[name] + "]");
+                            field.checked = true;
+                            break;
+                        case 'checkbox':
+                            field.checked = json[name];
+                            break;
 
-                    field.value = json[name];
+                        default:
+                            field.value = json[name];
+                            break;
+                    }
 
                 }
 
