@@ -97,11 +97,11 @@ class User {
 
         if (!usersID > 0) usersID = 0;
 
-        id++;
+        usersID++;
 
         localStorage.setItem("usersID", usersID);
 
-        return id;
+        return usersID;
 
     } //    getNewID()
 
@@ -140,9 +140,9 @@ class User {
 
         let users = User.getUsersStorage();
 
-        users.array.forEach(userData, index => {
+        users.forEach((userData, index) => {
             
-            if (this._id == userData.id) {
+            if (this._id == userData._id) {
 
                 users.splice(index, 1);
 

@@ -286,7 +286,7 @@ class UserController {
 
                 let user = new User();
 
-                user.loadFromJSON(JSON.parse(tr.dataset.user);
+                user.loadFromJSON(JSON.parse(tr.dataset.user));
 
                 user.remove();
 
